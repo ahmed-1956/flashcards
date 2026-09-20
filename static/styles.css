@@ -1,0 +1,1633 @@
+/* =========================================
+   FLASHCARDS — PREMIUM GREEN UI
+   ========================================= */
+
+:root {
+    --bg: #07100c;
+    --bg-soft: #0b1711;
+    --surface: rgba(15, 29, 22, 0.82);
+    --surface-solid: #0e1d15;
+    --surface-light: #14291f;
+
+    --green: #39d98a;
+    --green-bright: #54f2a0;
+    --green-dark: #168452;
+
+    --text: #f1f5f2;
+    --text-soft: #b8c5be;
+    --text-muted: #718078;
+
+    --border: rgba(84, 242, 160, 0.14);
+    --border-strong: rgba(84, 242, 160, 0.28);
+
+    --shadow:
+        0 18px 50px rgba(0, 0, 0, 0.45);
+
+    --glow:
+        0 0 35px rgba(57, 217, 138, 0.08);
+
+    --radius: 20px;
+}
+
+
+/* =========================================
+   RESET
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(57, 217, 138, 0.12),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 100% 40%,
+            rgba(57, 217, 138, 0.05),
+            transparent 30%
+        ),
+        var(--bg);
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   NAVIGATION
+   ========================================= */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    padding: 18px 18px 16px;
+
+    background: rgba(7, 16, 12, 0.82);
+    border-bottom: 1px solid var(--border);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+}
+
+nav h1 {
+    margin: 0;
+
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+
+    color: var(--text);
+}
+
+nav h1::after {
+    content: "";
+    display: inline-block;
+
+    width: 7px;
+    height: 7px;
+
+    margin-left: 6px;
+
+    border-radius: 50%;
+
+    background: var(--green);
+    box-shadow: 0 0 14px rgba(57, 217, 138, 0.8);
+}
+
+nav > div {
+    display: flex;
+    gap: 7px;
+
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+nav > div::-webkit-scrollbar {
+    display: none;
+}
+
+nav a {
+    flex-shrink: 0;
+
+    padding: 9px 13px;
+
+    color: var(--text-soft);
+    text-decoration: none;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    border: 1px solid transparent;
+    border-radius: 12px;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+nav a:hover {
+    color: var(--green-bright);
+
+    background: rgba(57, 217, 138, 0.07);
+    border-color: var(--border);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   MAIN
+   ========================================= */
+
+main {
+    width: min(100% - 28px, 900px);
+
+    margin: 0 auto;
+    padding: 34px 0 70px;
+}
+
+h2 {
+    margin: 0 0 24px;
+
+    font-size: clamp(1.65rem, 7vw, 2.3rem);
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+}
+
+h3 {
+    margin: 0 0 10px;
+
+    font-size: 1.05rem;
+    line-height: 1.35;
+}
+
+p {
+    color: var(--text-soft);
+}
+
+
+/* =========================================
+   GLASS SURFACE
+   ========================================= */
+
+main > div,
+form {
+    position: relative;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.035),
+            transparent 45%
+        ),
+        var(--surface);
+
+    box-shadow:
+        var(--shadow),
+        var(--glow);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+
+/* =========================================
+   FLASHCARD LIST
+   ========================================= */
+
+main > div {
+    margin-bottom: 16px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+main > div::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(84, 242, 160, 0.45),
+            transparent
+        );
+}
+
+main > div p {
+    margin: 8px 0 14px;
+}
+
+main > div small {
+    display: inline-block;
+
+    padding: 5px 9px;
+
+    color: var(--green-bright);
+
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+
+    background: rgba(57, 217, 138, 0.07);
+    border: 1px solid var(--border);
+
+    border-radius: 999px;
+}
+
+
+/* =========================================
+   LINKS
+   ========================================= */
+
+a {
+    color: var(--green);
+}
+
+main > div a {
+    display: inline-flex;
+    align-items: center;
+
+    margin-top: 16px;
+    margin-right: 8px;
+
+    padding: 8px 12px;
+
+    color: var(--text-soft);
+    text-decoration: none;
+
+    font-size: 0.82rem;
+    font-weight: 650;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+main > div a:hover {
+    color: var(--green-bright);
+    border-color: var(--border-strong);
+    background: rgba(57, 217, 138, 0.06);
+}
+
+
+/* =========================================
+   FORMS
+   ========================================= */
+
+form {
+    padding: 22px;
+}
+
+label {
+    display: block;
+
+    margin: 0 0 7px;
+
+    color: var(--text-soft);
+
+    font-size: 0.84rem;
+    font-weight: 650;
+}
+
+input,
+textarea {
+    width: 100%;
+
+    margin-bottom: 18px;
+    padding: 13px 14px;
+
+    color: var(--text);
+
+    font: inherit;
+    font-size: 0.95rem;
+
+    background: rgba(0, 0, 0, 0.22);
+
+    border: 1px solid var(--border);
+    border-radius: 13px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-muted);
+}
+
+input:focus,
+textarea:focus {
+    background: rgba(0, 0, 0, 0.32);
+
+    border-color: rgba(84, 242, 160, 0.55);
+
+    box-shadow:
+        0 0 0 3px rgba(57, 217, 138, 0.08),
+        0 0 25px rgba(57, 217, 138, 0.06);
+}
+
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+button {
+    appearance: none;
+
+    border: 0;
+
+    padding: 12px 17px;
+
+    color: #04110a;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--green-bright),
+            var(--green)
+        );
+
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 800;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 24px rgba(57, 217, 138, 0.16);
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        filter 0.18s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.06);
+
+    box-shadow:
+        0 12px 30px rgba(57, 217, 138, 0.22);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   DELETE BUTTON
+   ========================================= */
+
+form[style*="display:inline"] {
+    display: inline !important;
+
+    padding: 0;
+
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+form[style*="display:inline"] button {
+    padding: 8px 12px;
+
+    color: #ffb4b4;
+
+    background: rgba(255, 70, 70, 0.07);
+
+    border: 1px solid rgba(255, 90, 90, 0.15);
+
+    box-shadow: none;
+}
+
+form[style*="display:inline"] button:hover {
+    background: rgba(255, 70, 70, 0.12);
+
+    border-color: rgba(255, 90, 90, 0.28);
+}
+
+
+/* =========================================
+   HORIZONTAL RULE
+   ========================================= */
+
+hr {
+    display: none;
+}
+
+
+/* =========================================
+   STUDY MODE
+   ========================================= */
+
+main > h2 + p {
+    color: var(--text-muted);
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    nav {
+        padding: 15px 14px 13px;
+    }
+
+    nav h1 {
+        font-size: 1.2rem;
+    }
+
+    nav a {
+        padding: 8px 11px;
+        font-size: 0.78rem;
+    }
+
+    main {
+        width: min(100% - 22px, 900px);
+        padding-top: 27px;
+    }
+
+    main > div {
+        padding: 17px;
+        border-radius: 17px;
+    }
+
+    form {
+        padding: 18px;
+        border-radius: 17px;
+    }
+
+    input,
+    textarea {
+        font-size: 16px;
+    }
+
+    button {
+        width: 100%;
+        min-height: 46px;
+    }
+
+    form[style*="display:inline"] button {
+        width: auto;
+        min-height: auto;
+    }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+    }
+}
+/* =========================================
+   PREMIUM NAVIGATION
+      ========================================= */
+
+      .nav-brand {
+          display: flex;
+              align-items: center;
+                  gap: 12px;
+                  }
+
+                  .brand-logo {
+                      width: 42px;
+                          height: 42px;
+                              display: grid;
+                                  place-items: center;
+
+                                      border: 1px solid rgba(57, 217, 138, 0.28);
+                                          border-radius: 12px;
+
+                                              background:
+                                                      linear-gradient(
+                                                                  145deg,
+                                                                              rgba(57, 217, 138, 0.16),
+                                                                                          rgba(57, 217, 138, 0.04)
+                                                                                                  );
+
+                                                                                                      color: var(--green-bright);
+
+                                                                                                          box-shadow:
+                                                                                                                  0 0 22px rgba(57, 217, 138, 0.08),
+                                                                                                                          inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+                                                                                                                              transition:
+                                                                                                                                      transform 0.25s ease,
+                                                                                                                                              border-color 0.25s ease,
+                                                                                                                                                      box-shadow 0.25s ease;
+                                                                                                                                                      }
+
+                                                                                                                                                      .brand-logo i {
+                                                                                                                                                          font-size: 18px;
+                                                                                                                                                          }
+
+                                                                                                                                                          .brand-logo:hover {
+                                                                                                                                                              transform: translateY(-1px);
+                                                                                                                                                                  border-color: rgba(57, 217, 138, 0.5);
+
+                                                                                                                                                                      box-shadow:
+                                                                                                                                                                              0 0 28px rgba(57, 217, 138, 0.14),
+                                                                                                                                                                                      inset 0 1px 0 rgba(255, 255, 255, 0.07);
+                                                                                                                                                                                      }
+
+                                                                                                                                                                                      .nav-links {
+                                                                                                                                                                                          display: flex;
+                                                                                                                                                                                              align-items: center;
+                                                                                                                                                                                                  gap: 6px;
+                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                  .nav-links a {
+                                                                                                                                                                                                      position: relative;
+
+                                                                                                                                                                                                          display: inline-flex;
+                                                                                                                                                                                                              align-items: center;
+                                                                                                                                                                                                                  gap: 8px;
+
+                                                                                                                                                                                                                      padding: 10px 13px;
+
+                                                                                                                                                                                                                          border: 1px solid transparent;
+                                                                                                                                                                                                                              border-radius: 10px;
+
+                                                                                                                                                                                                                                  color: var(--muted);
+                                                                                                                                                                                                                                      text-decoration: none;
+
+                                                                                                                                                                                                                                          font-size: 0.9rem;
+                                                                                                                                                                                                                                              font-weight: 500;
+
+                                                                                                                                                                                                                                                  transition:
+                                                                                                                                                                                                                                                          color 0.2s ease,
+                                                                                                                                                                                                                                                                  background 0.2s ease,
+                                                                                                                                                                                                                                                                          border-color 0.2s ease,
+                                                                                                                                                                                                                                                                                  transform 0.2s ease;
+                                                                                                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                                                                                                  .nav-links a i {
+                                                                                                                                                                                                                                                                                      font-size: 14px;
+                                                                                                                                                                                                                                                                                          transition: transform 0.2s ease;
+                                                                                                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                                                                                                          .nav-links a:hover {
+                                                                                                                                                                                                                                                                                              color: var(--text);
+
+                                                                                                                                                                                                                                                                                                  background: rgba(57, 217, 138, 0.07);
+                                                                                                                                                                                                                                                                                                      border-color: rgba(57, 217, 138, 0.12);
+
+                                                                                                                                                                                                                                                                                                          transform: translateY(-1px);
+                                                                                                                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                                                                                                                          .nav-links a:hover i {
+                                                                                                                                                                                                                                                                                                              color: var(--green-bright);
+                                                                                                                                                                                                                                                                                                                  transform: scale(1.08);
+                                                                                                                                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                                                                                                                                  /* Active-looking interaction */
+                                                                                                                                                                                                                                                                                                                  .nav-links a:active {
+                                                                                                                                                                                                                                                                                                                      transform: translateY(0);
+                                                                                                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                                                                                                      /* Add button */
+                                                                                                                                                                                                                                                                                                                      .nav-links a:last-child {
+                                                                                                                                                                                                                                                                                                                          color: #06110b;
+
+                                                                                                                                                                                                                                                                                                                              background: var(--green);
+                                                                                                                                                                                                                                                                                                                                  border-color: var(--green);
+
+                                                                                                                                                                                                                                                                                                                                      font-weight: 650;
+
+                                                                                                                                                                                                                                                                                                                                          box-shadow:
+                                                                                                                                                                                                                                                                                                                                                  0 6px 20px rgba(57, 217, 138, 0.12);
+                                                                                                                                                                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                                                                                                                                                                  .nav-links a:last-child:hover {
+                                                                                                                                                                                                                                                                                                                                                      color: #06110b;
+
+                                                                                                                                                                                                                                                                                                                                                          background: var(--green-bright);
+                                                                                                                                                                                                                                                                                                                                                              border-color: var(--green-bright);
+
+                                                                                                                                                                                                                                                                                                                                                                  box-shadow:
+                                                                                                                                                                                                                                                                                                                                                                          0 8px 26px rgba(57, 217, 138, 0.2);
+                                                                                                                                                                                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                                                                                                                                                                                          .nav-links a:last-child i {
+                                                                                                                                                                                                                                                                                                                                                                              color: inherit;
+                                                                                                                                                                                                                                                                                                                                                                              }
+
+
+                                                                                                                                                                                                                                                                                                                                                                              /* =========================================
+                                                                                                                                                                                                                                                                                                                                                                                 MOBILE NAVIGATION
+                                                                                                                                                                                                                                                                                                                                                                                    ========================================= */
+
+                                                                                                                                                                                                                                                                                                                                                                                    @media (max-width: 700px) {
+
+                                                                                                                                                                                                                                                                                                                                                                                        nav {
+                                                                                                                                                                                                                                                                                                                                                                                                gap: 14px;
+                                                                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                                                                        .nav-brand {
+                                                                                                                                                                                                                                                                                                                                                                                                                width: 100%;
+                                                                                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                        .nav-brand h1 {
+                                                                                                                                                                                                                                                                                                                                                                                                                                font-size: 1.15rem;
+                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                        .nav-links {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                width: 100%;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        display: grid;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                grid-template-columns: repeat(4, 1fr);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        gap: 5px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .nav-links a {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        justify-content: center;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                flex-direction: column;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        gap: 4px;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                padding: 9px 5px;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        font-size: 0.68rem;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                border-radius: 10px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        .nav-links a i {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                font-size: 15px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+/* =========================================
+   MOBILE-FIRST NAV OVERRIDE
+      ========================================= */
+
+      @media (max-width: 700px) {
+
+          nav {
+                  width: 100%;
+                          box-sizing: border-box;
+
+                                  display: flex;
+                                          flex-direction: column;
+                                                  align-items: stretch;
+
+                                                          padding: 12px 14px;
+                                                                  gap: 12px;
+                                                                      }
+
+                                                                          .nav-brand {
+                                                                                  width: 100%;
+                                                                                          display: flex;
+                                                                                                  align-items: center;
+                                                                                                      }
+
+                                                                                                          .nav-links {
+                                                                                                                  width: 100%;
+
+                                                                                                                          display: grid;
+                                                                                                                                  grid-template-columns: repeat(4, 1fr);
+
+                                                                                                                                          gap: 6px;
+                                                                                                                                              }
+
+                                                                                                                                                  .nav-links a {
+                                                                                                                                                          width: 100%;
+                                                                                                                                                                  min-width: 0;
+                                                                                                                                                                          box-sizing: border-box;
+
+                                                                                                                                                                                  display: flex;
+                                                                                                                                                                                          flex-direction: column;
+                                                                                                                                                                                                  align-items: center;
+                                                                                                                                                                                                          justify-content: center;
+
+                                                                                                                                                                                                                  gap: 5px;
+
+                                                                                                                                                                                                                          padding: 9px 3px;
+
+                                                                                                                                                                                                                                  text-align: center;
+                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                          .nav-links a i {
+                                                                                                                                                                                                                                                  display: block;
+                                                                                                                                                                                                                                                          font-size: 16px;
+                                                                                                                                                                                                                                                                  line-height: 1;
+                                                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                                                          .nav-links a span {
+                                                                                                                                                                                                                                                                                  display: block;
+
+                                                                                                                                                                                                                                                                                          font-size: 0.65rem;
+                                                                                                                                                                                                                                                                                                  line-height: 1.1;
+
+                                                                                                                                                                                                                                                                                                          white-space: nowrap;
+                                                                                                                                                                                                                                                                                                              }
+
+                                                                                                                                                                                                                                                                                                                  .nav-links a:last-child {
+                                                                                                                                                                                                                                                                                                                          padding: 9px 3px;
+                                                                                                                                                                                                                                                                                                                              }
+                                                                                                                                                                                                                                                                                                                              }
+/* =========================================
+   FLASHCARD ITEM
+      ========================================= */
+
+      .flashcard-item {
+          position: relative;
+
+              margin: 18px 0;
+                  padding: 22px;
+
+                      background:
+                              linear-gradient(
+                                          145deg,
+                                                      rgba(20, 38, 29, 0.92),
+                                                                  rgba(10, 21, 16, 0.88)
+                                                                          );
+
+                                                                              border: 1px solid rgba(57, 217, 138, 0.14);
+                                                                                  border-radius: 18px;
+
+                                                                                      box-shadow:
+                                                                                              0 12px 35px rgba(0, 0, 0, 0.22),
+                                                                                                      inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+                                                                                                          transition:
+                                                                                                                  transform 0.25s ease,
+                                                                                                                          border-color 0.25s ease,
+                                                                                                                                  box-shadow 0.25s ease;
+                                                                                                                                  }
+
+                                                                                                                                  .flashcard-item:hover {
+                                                                                                                                      transform: translateY(-2px);
+
+                                                                                                                                          border-color: rgba(57, 217, 138, 0.30);
+
+                                                                                                                                              box-shadow:
+                                                                                                                                                      0 16px 42px rgba(0, 0, 0, 0.28),
+                                                                                                                                                              0 0 28px rgba(57, 217, 138, 0.06);
+                                                                                                                                                              }
+
+                                                                                                                                                              .flashcard-item h3 {
+                                                                                                                                                                  margin: 0 0 12px;
+
+                                                                                                                                                                      color: var(--text);
+                                                                                                                                                                          font-size: 1.08rem;
+                                                                                                                                                                              font-weight: 650;
+                                                                                                                                                                              }
+
+                                                                                                                                                                              .flashcard-item p {
+                                                                                                                                                                                  margin: 0 0 16px;
+
+                                                                                                                                                                                      color: var(--muted);
+                                                                                                                                                                                          line-height: 1.65;
+                                                                                                                                                                                          }
+
+                                                                                                                                                                                          .flashcard-item small {
+                                                                                                                                                                                              display: inline-block;
+
+                                                                                                                                                                                                  padding: 5px 10px;
+
+                                                                                                                                                                                                      color: var(--green-bright);
+                                                                                                                                                                                                          background: rgba(57, 217, 138, 0.08);
+
+                                                                                                                                                                                                              border: 1px solid rgba(57, 217, 138, 0.16);
+                                                                                                                                                                                                                  border-radius: 999px;
+
+                                                                                                                                                                                                                      font-size: 0.72rem;
+                                                                                                                                                                                                                          font-weight: 600;
+                                                                                                                                                                                                                          }
+/* =========================================
+   CARD ACTIONS
+      ========================================= */
+
+      .card-action {
+          display: inline-flex;
+              align-items: center;
+                  gap: 7px;
+
+                      padding: 8px 12px;
+
+                          border-radius: 9px;
+                              border: 1px solid transparent;
+
+                                  font: inherit;
+                                      font-size: 0.78rem;
+                                          font-weight: 600;
+
+                                              text-decoration: none;
+                                                  cursor: pointer;
+
+                                                      transition:
+                                                              background 0.2s ease,
+                                                                      border-color 0.2s ease,
+                                                                              color 0.2s ease,
+                                                                                      transform 0.2s ease;
+                                                                                      }
+
+                                                                                      .card-action:hover {
+                                                                                          transform: translateY(-1px);
+                                                                                          }
+
+                                                                                          .edit-action {
+                                                                                              color: var(--green-bright);
+                                                                                                  background: rgba(57, 217, 138, 0.07);
+                                                                                                      border-color: rgba(57, 217, 138, 0.15);
+                                                                                                      }
+
+                                                                                                      .edit-action:hover {
+                                                                                                          background: rgba(57, 217, 138, 0.13);
+                                                                                                              border-color: rgba(57, 217, 138, 0.3);
+                                                                                                              }
+
+                                                                                                              .delete-action {
+                                                                                                                  color: #ff8f8f;
+                                                                                                                      background: rgba(255, 80, 80, 0.06);
+                                                                                                                          border-color: rgba(255, 80, 80, 0.12);
+                                                                                                                          }
+
+                                                                                                                          .delete-action:hover {
+                                                                                                                              background: rgba(255, 80, 80, 0.11);
+                                                                                                                                  border-color: rgba(255, 80, 80, 0.25);
+                                                                                                                                  }
+/* =========================================
+   MOBILE CARD ACTIONS
+      ========================================= */
+
+      .flashcard-item form {
+          display: inline;
+          }
+
+          @media (max-width: 700px) {
+
+              .flashcard-item {
+                      padding: 18px;
+                          }
+                          .card-actions {
+                                display: flex;
+                                    align-items: center;
+                                        gap: 8px;
+                                            margin-top: 16px;
+                                            }
+                          }
+                              .card-action {
+                                      min-height: 38px;
+                                              padding: 8px 11px;
+                                                  }
+
+                                                      .flashcard-item .card-action {
+                                                              margin-top: 4px;
+                                                                  }
+
+
+/* =========================================
+   PREMIUM FORMS
+      ========================================= */
+
+      form label {
+          display: block;
+              margin: 18px 0 7px;
+
+                  color: var(--text);
+                      font-size: 0.82rem;
+                          font-weight: 600;
+                          }
+
+                          form input,
+                          form textarea {
+                              width: 100%;
+                                  box-sizing: border-box;
+
+                                      padding: 12px 14px;
+
+                                          color: var(--text);
+                                              background: rgba(255, 255, 255, 0.035);
+
+                                                  border: 1px solid rgba(57, 217, 138, 0.12);
+                                                      border-radius: 11px;
+
+                                                          outline: none;
+
+                                                              font: inherit;
+                                                                  font-size: 0.9rem;
+
+                                                                      transition:
+                                                                              border-color 0.2s ease,
+                                                                                      background 0.2s ease,
+                                                                                              box-shadow 0.2s ease;
+                                                                                              }
+
+                                                                                              form textarea {
+                                                                                                  min-height: 130px;
+                                                                                                      resize: vertical;
+                                                                                                          line-height: 1.55;
+                                                                                                          }
+
+                                                                                                          form input:focus,
+                                                                                                          form textarea:focus {
+                                                                                                              background: rgba(57, 217, 138, 0.035);
+
+                                                                                                                  border-color: rgba(57, 217, 138, 0.48);
+
+                                                                                                                      box-shadow:
+                                                                                                                              0 0 0 3px rgba(57, 217, 138, 0.07);
+                                                                                                                              }
+
+                                                                                                                              form button[type="submit"] {
+                                                                                                                                  margin-top: 22px;
+
+                                                                                                                                      padding: 11px 18px;
+
+                                                                                                                                          color: #06110b;
+                                                                                                                                              background: var(--green);
+
+                                                                                                                                                  border: 1px solid var(--green);
+                                                                                                                                                      border-radius: 10px;
+
+                                                                                                                                                          font: inherit;
+                                                                                                                                                              font-size: 0.84rem;
+                                                                                                                                                                  font-weight: 650;
+
+                                                                                                                                                                      cursor: pointer;
+
+                                                                                                                                                                          box-shadow:
+                                                                                                                                                                                  0 7px 22px rgba(57, 217, 138, 0.10);
+
+                                                                                                                                                                                      transition:
+                                                                                                                                                                                              background 0.2s ease,
+                                                                                                                                                                                                      transform 0.2s ease,
+                                                                                                                                                                                                              box-shadow 0.2s ease;
+                                                                                                                                                                                                              }
+
+                                                                                                                                                                                                              form button[type="submit"]:hover {
+                                                                                                                                                                                                                  background: var(--green-bright);
+
+                                                                                                                                                                                                                      transform: translateY(-1px);
+
+                                                                                                                                                                                                                          box-shadow:
+                                                                                                                                                                                                                                  0 9px 28px rgba(57, 217, 138, 0.17);
+                                                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                                                  form button[type="submit"]:active {
+                                                                                                                                                                                                                                      transform: translateY(0);
+                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                      @media (max-width: 700px) {
+
+                                                                                                                                                                                                                                          form input,
+                                                                                                                                                                                                                                              form textarea {
+                                                                                                                                                                                                                                                      font-size: 16px;
+                                                                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                                                                              form button[type="submit"] {
+                                                                                                                                                                                                                                                                      width: 100%;
+                                                                                                                                                                                                                                                                              min-height: 44px;
+                                                                                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                                                                                  }
+/* =========================================
+   STUDY CARD
+      ========================================= */
+
+      .study-card {
+          padding: 28px 22px;
+              margin: 24px 0;
+
+                  background:
+                          linear-gradient(
+                                      145deg,
+                                                  rgba(20, 38, 29, 0.94),
+                                                              rgba(10, 21, 16, 0.90)
+                                                                      );
+
+                                                                          border: 1px solid rgba(57, 217, 138, 0.16);
+                                                                              border-radius: 20px;
+
+                                                                                  box-shadow:
+                                                                                          0 14px 40px rgba(0, 0, 0, 0.24),
+                                                                                                  inset 0 1px 0 rgba(255, 255, 255, 0.035);
+                                                                                                  }
+/* =========================================
+   STUDY ACTION
+      ========================================= */
+
+      .study-card button {
+          padding: 11px 18px;
+
+              color: #06110b;
+                  background: var(--green);
+
+                      border: 1px solid var(--green);
+                          border-radius: 10px;
+
+                              font: inherit;
+                                  font-size: 0.84rem;
+                                      font-weight: 650;
+
+                                          cursor: pointer;
+
+                                              box-shadow:
+                                                      0 7px 22px rgba(57, 217, 138, 0.10);
+
+                                                          transition:
+                                                                  background 0.2s ease,
+                                                                          transform 0.2s ease,
+                                                                                  box-shadow 0.2s ease;
+                                                                                  }
+
+                                                                                  .study-card button:hover {
+                                                                                      background: var(--green-bright);
+                                                                                          transform: translateY(-1px);
+
+                                                                                              box-shadow:
+                                                                                                      0 9px 28px rgba(57, 217, 138, 0.17);
+                                                                                                      }
+
+                                                                                                      .study-card button:active {
+                                                                                                          transform: translateY(0);
+                                                                                                          }
+.study-card h3 {
+        margin: 0 0 22px;
+
+            color: var(--text);
+                font-size: 1.25rem;
+                    line-height: 1.5;
+                        font-weight: 650;
+                        }
+
+.study-card p {
+        margin: 20px 0 0;
+
+            padding: 16px 18px;
+
+                color: var(--text);
+                    background: rgba(57, 217, 138, 0.045);
+
+                        border-left: 2px solid var(--green);
+
+                            border-radius: 0 10px 10px 0;
+
+                                line-height: 1.65;
+                                    font-size: 0.9rem;
+                                    }
+
+@media (max-width: 700px) {
+
+        .study-card {
+                margin: 18px 0;
+                        padding: 22px 18px;
+                                border-radius: 17px;
+                                    }
+
+                                        .study-card h3 {
+                                                font-size: 1.08rem;
+                                                        line-height: 1.55;
+                                                                margin-bottom: 20px;
+                                                                    }
+
+                                                                        .study-card button {
+                                                                                width: 100%;
+                                                                                        min-height: 44px;
+                                                                                            }
+
+                                                                                            }
+
+
+/* =========================================
+   HOME HERO
+      ========================================= */
+
+      .home-hero {
+          position: relative;
+
+              margin-bottom: 26px;
+                  padding: 28px 24px;
+
+                      background:
+                              linear-gradient(
+                                          145deg,
+                                                      rgba(20, 38, 29, 0.94),
+                                                                  rgba(10, 21, 16, 0.88)
+                                                                          );
+
+                                                                              border: 1px solid rgba(57, 217, 138, 0.14);
+                                                                                  border-radius: 20px;
+
+                                                                                      box-shadow:
+                                                                                              0 14px 40px rgba(0, 0, 0, 0.22),
+                                                                                                      inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+                                                                                                          overflow: hidden;
+                                                                                                          }
+
+                                                                                                          .home-hero::after {
+                                                                                                              content: "";
+
+                                                                                                                  position: absolute;
+                                                                                                                      width: 180px;
+                                                                                                                          height: 180px;
+
+                                                                                                                              right: -70px;
+                                                                                                                                  top: -80px;
+
+                                                                                                                                      background: rgba(57, 217, 138, 0.08);
+
+                                                                                                                                          border-radius: 50%;
+
+                                                                                                                                              filter: blur(10px);
+                                                                                                                                              }
+
+                                                                                                                                              .home-eyebrow {
+                                                                                                                                                  position: relative;
+                                                                                                                                                      z-index: 1;
+
+                                                                                                                                                          display: inline-flex;
+                                                                                                                                                              align-items: center;
+                                                                                                                                                                  gap: 7px;
+
+                                                                                                                                                                      margin-bottom: 14px;
+
+                                                                                                                                                                          color: var(--green-bright);
+
+                                                                                                                                                                              font-size: 0.72rem;
+                                                                                                                                                                                  font-weight: 650;
+                                                                                                                                                                                      letter-spacing: 0.08em;
+                                                                                                                                                                                          text-transform: uppercase;
+                                                                                                                                                                                          }
+
+                                                                                                                                                                                          .home-eyebrow i {
+                                                                                                                                                                                              font-size: 13px;
+                                                                                                                                                                                              }
+
+                                                                                                                                                                                              .home-hero h2 {
+                                                                                                                                                                                                  position: relative;
+                                                                                                                                                                                                      z-index: 1;
+
+                                                                                                                                                                                                          max-width: 650px;
+
+                                                                                                                                                                                                              margin: 0 0 12px;
+
+                                                                                                                                                                                                                  color: var(--text);
+
+                                                                                                                                                                                                                      font-size: 1.8rem;
+                                                                                                                                                                                                                          line-height: 1.2;
+                                                                                                                                                                                                                              font-weight: 700;
+                                                                                                                                                                                                                                  letter-spacing: -0.025em;
+                                                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                                                  .home-hero p {
+                                                                                                                                                                                                                                      position: relative;
+                                                                                                                                                                                                                                          z-index: 1;
+
+                                                                                                                                                                                                                                              max-width: 560px;
+
+                                                                                                                                                                                                                                                  margin: 0;
+
+                                                                                                                                                                                                                                                      color: var(--muted);
+
+                                                                                                                                                                                                                                                          font-size: 0.92rem;
+                                                                                                                                                                                                                                                              line-height: 1.65;
+                                                                                                                                                                                                                                                              }
+
+
+                                                                                                                                                                                                                                                              /* =========================================
+                                                                                                                                                                                                                                                                 MOBILE HOME HERO
+                                                                                                                                                                                                                                                                    ========================================= */
+
+                                                                                                                                                                                                                                                                    @media (max-width: 700px) {
+
+                                                                                                                                                                                                                                                                        .home-hero {
+                                                                                                                                                                                                                                                                                margin-bottom: 20px;
+                                                                                                                                                                                                                                                                                        padding: 23px 18px;
+
+                                                                                                                                                                                                                                                                                                border-radius: 17px;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                        .home-hero h2 {
+                                                                                                                                                                                                                                                                                                                font-size: 1.38rem;
+                                                                                                                                                                                                                                                                                                                        line-height: 1.35;
+                                                                                                                                                                                                                                                                                                                            }
+
+                                                                                                                                                                                                                                                                                                                                .home-hero p {
+                                                                                                                                                                                                                                                                                                                                        font-size: 0.86rem;
+                                                                                                                                                                                                                                                                                                                                                line-height: 1.6;
+                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                    }
+/* =========================================
+   HOME ACTION CARDS
+      ========================================= */
+
+      .home-actions {
+          display: grid;
+              grid-template-columns: repeat(2, 1fr);
+                  gap: 14px;
+                  }
+
+                  .home-action {
+                      position: relative;
+
+                          display: flex;
+                              align-items: center;
+                                  gap: 14px;
+
+                                      min-height: 92px;
+                                          padding: 18px;
+
+                                              color: var(--text);
+                                                  background:
+                                                          linear-gradient(
+                                                                      145deg,
+                                                                                  rgba(20, 38, 29, 0.88),
+                                                                                              rgba(10, 21, 16, 0.82)
+                                                                                                      );
+
+                                                                                                          border: 1px solid rgba(57, 217, 138, 0.12);
+                                                                                                              border-radius: 16px;
+
+                                                                                                                  text-decoration: none;
+
+                                                                                                                      box-shadow:
+                                                                                                                              0 10px 30px rgba(0, 0, 0, 0.18),
+                                                                                                                                      inset 0 1px 0 rgba(255, 255, 255, 0.03);
+
+                                                                                                                                          transition:
+                                                                                                                                                  transform 0.22s ease,
+                                                                                                                                                          border-color 0.22s ease,
+                                                                                                                                                                  background 0.22s ease,
+                                                                                                                                                                          box-shadow 0.22s ease;
+                                                                                                                                                                          }
+
+                                                                                                                                                                          .home-action:hover {
+                                                                                                                                                                              transform: translateY(-2px);
+
+                                                                                                                                                                                  border-color: rgba(57, 217, 138, 0.28);
+
+                                                                                                                                                                                      background:
+                                                                                                                                                                                              linear-gradient(
+                                                                                                                                                                                                          145deg,
+                                                                                                                                                                                                                      rgba(23, 46, 34, 0.94),
+                                                                                                                                                                                                                                  rgba(10, 23, 17, 0.90)
+                                                                                                                                                                                                                                          );
+
+                                                                                                                                                                                                                                              box-shadow:
+                                                                                                                                                                                                                                                      0 16px 36px rgba(0, 0, 0, 0.24),
+                                                                                                                                                                                                                                                              0 0 24px rgba(57, 217, 138, 0.05);
+                                                                                                                                                                                                                                                              }
+
+                                                                                                                                                                                                                                                              .home-action-icon {
+                                                                                                                                                                                                                                                                  flex: 0 0 42px;
+
+                                                                                                                                                                                                                                                                      width: 42px;
+                                                                                                                                                                                                                                                                          height: 42px;
+
+                                                                                                                                                                                                                                                                              display: grid;
+                                                                                                                                                                                                                                                                                  place-items: center;
+
+                                                                                                                                                                                                                                                                                      color: var(--green-bright);
+
+                                                                                                                                                                                                                                                                                          background: rgba(57, 217, 138, 0.08);
+
+                                                                                                                                                                                                                                                                                              border: 1px solid rgba(57, 217, 138, 0.14);
+                                                                                                                                                                                                                                                                                                  border-radius: 12px;
+                                                                                                                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                                                                                                                  .home-action-icon i {
+                                                                                                                                                                                                                                                                                                      font-size: 16px;
+                                                                                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                                                                                      .home-action-content {
+                                                                                                                                                                                                                                                                                                          min-width: 0;
+
+                                                                                                                                                                                                                                                                                                              display: flex;
+                                                                                                                                                                                                                                                                                                                  flex-direction: column;
+                                                                                                                                                                                                                                                                                                                      gap: 5px;
+
+                                                                                                                                                                                                                                                                                                                          flex: 1;
+                                                                                                                                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                                                                                                                                          .home-action-content strong {
+                                                                                                                                                                                                                                                                                                                              color: var(--text);
+
+                                                                                                                                                                                                                                                                                                                                  font-size: 0.9rem;
+                                                                                                                                                                                                                                                                                                                                      font-weight: 650;
+                                                                                                                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                                                                                                                      .home-action-content small {
+                                                                                                                                                                                                                                                                                                                                          color: var(--muted);
+
+                                                                                                                                                                                                                                                                                                                                              font-size: 0.74rem;
+                                                                                                                                                                                                                                                                                                                                                  line-height: 1.4;
+                                                                                                                                                                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                                                                                                                                                                  .home-action-arrow {
+                                                                                                                                                                                                                                                                                                                                                      color: var(--muted);
+                                                                                                                                                                                                                                                                                                                                                          font-size: 13px;
+
+                                                                                                                                                                                                                                                                                                                                                              transition:
+                                                                                                                                                                                                                                                                                                                                                                      color 0.2s ease,
+                                                                                                                                                                                                                                                                                                                                                                              transform 0.2s ease;
+                                                                                                                                                                                                                                                                                                                                                                              }
+
+                                                                                                                                                                                                                                                                                                                                                                              .home-action:hover .home-action-arrow {
+                                                                                                                                                                                                                                                                                                                                                                                  color: var(--green-bright);
+                                                                                                                                                                                                                                                                                                                                                                                      transform: translateX(3px);
+                                                                                                                                                                                                                                                                                                                                                                                      }
+
+
+                                                                                                                                                                                                                                                                                                                                                                                      /* =========================================
+                                                                                                                                                                                                                                                                                                                                                                                         PRIMARY HOME ACTION
+                                                                                                                                                                                                                                                                                                                                                                                            ========================================= */
+
+                                                                                                                                                                                                                                                                                                                                                                                            .home-action.primary-action {
+                                                                                                                                                                                                                                                                                                                                                                                                border-color: rgba(57, 217, 138, 0.22);
+
+                                                                                                                                                                                                                                                                                                                                                                                                    background:
+                                                                                                                                                                                                                                                                                                                                                                                                            linear-gradient(
+                                                                                                                                                                                                                                                                                                                                                                                                                        145deg,
+                                                                                                                                                                                                                                                                                                                                                                                                                                    rgba(24, 55, 38, 0.96),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                rgba(10, 27, 19, 0.90)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        );
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        .home-action.primary-action .home-action-icon {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            color: #06110b;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                background: var(--green);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    border-color: var(--green);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    .home-action.primary-action .home-action-arrow {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        color: var(--green-bright);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        /* =========================================
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                           MOBILE HOME ACTIONS
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ========================================= */
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                              @media (max-width: 700px) {
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  .home-actions {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          grid-template-columns: 1fr;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  gap: 10px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          .home-action {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  min-height: 72px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          padding: 15px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  border-radius: 15px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          .home-action-icon {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  flex-basis: 40px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          width: 40px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  height: 40px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          .home-action-content strong {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  font-size: 0.86rem;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          .home-action-content small {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  font-size: 0.72rem;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      }
+/* =========================================
+   PAGE HEADING
+      ========================================= */
+
+      .page-heading {
+          margin-bottom: 24px;
+          }
+
+          .page-eyebrow {
+              display: inline-flex;
+                  align-items: center;
+                      gap: 7px;
+
+                          margin-bottom: 8px;
+
+                              color: var(--green-bright);
+                                  font-size: 0.72rem;
+                                      font-weight: 650;
+                                          letter-spacing: 0.04em;
+                                              text-transform: uppercase;
+                                              }
+
+                                              .page-eyebrow i {
+                                                  font-size: 12px;
+                                                  }
+
+                                                  .page-heading h2 {
+                                                      margin: 0;
+
+                                                          color: var(--text);
+                                                              font-size: 1.5rem;
+                                                                  font-weight: 700;
+                                                                  }
+
+                                                                  .page-heading p {
+                                                                      margin: 7px 0 0;
+
+                                                                          color: var(--muted);
+                                                                              font-size: 0.82rem;
+                                                                                  line-height: 1.5;
+                                                                                  }
+/* =========================================
+   FLASHCARD SEPARATOR
+      ========================================= */
+
+      .flashcard-item + hr {
+          border: 0;
+              height: 1px;
+                  margin: 18px 0;
+
+                      background: linear-gradient(
+                              to right,
+                                      transparent,
+                                              rgba(57, 217, 138, 0.10),
+                                                      transparent
+                                                          );
+                                                          }
+/* =========================================
+   STUDY CARD LIST
+      ========================================= */
+
+      .study-list-card {
+          display: flex;
+              align-items: center;
+                  gap: 14px;
+
+                      margin: 10px 0;
+                          padding: 15px 16px;
+
+                              color: var(--text);
+                                  text-decoration: none;
+
+                                      background:
+                                              linear-gradient(
+                                                          145deg,
+                                                                      rgba(20, 38, 29, 0.88),
+                                                                                  rgba(10, 21, 16, 0.82)
+                                                                                          );
+
+                                                                                              border: 1px solid rgba(57, 217, 138, 0.12);
+                                                                                                  border-radius: 15px;
+
+                                                                                                      box-shadow:
+                                                                                                              0 8px 25px rgba(0, 0, 0, 0.16),
+                                                                                                                      inset 0 1px 0 rgba(255, 255, 255, 0.03);
+
+                                                                                                                          transition:
+                                                                                                                                  transform 0.2s ease,
+                                                                                                                                          border-color 0.2s ease,
+                                                                                                                                                  box-shadow 0.2s ease;
+                                                                                                                                                  }
+
+                                                                                                                                                  .study-list-card:hover {
+                                                                                                                                                      transform: translateY(-2px);
+
+                                                                                                                                                          border-color: rgba(57, 217, 138, 0.28);
+
+                                                                                                                                                              box-shadow:
+                                                                                                                                                                      0 13px 32px rgba(0, 0, 0, 0.22),
+                                                                                                                                                                              0 0 22px rgba(57, 217, 138, 0.05);
+                                                                                                                                                                              }
+
+                                                                                                                                                                              .study-list-icon {
+                                                                                                                                                                                  flex: 0 0 40px;
+
+                                                                                                                                                                                      width: 40px;
+                                                                                                                                                                                          height: 40px;
+
+                                                                                                                                                                                              display: grid;
+                                                                                                                                                                                                  place-items: center;
+
+                                                                                                                                                                                                      color: var(--green-bright);
+                                                                                                                                                                                                          background: rgba(57, 217, 138, 0.08);
+
+                                                                                                                                                                                                              border: 1px solid rgba(57, 217, 138, 0.14);
+                                                                                                                                                                                                                  border-radius: 11px;
+                                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                                  .study-list-icon i {
+                                                                                                                                                                                                                      font-size: 15px;
+                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                      .study-list-content {
+                                                                                                                                                                                                                          min-width: 0;
+                                                                                                                                                                                                                              flex: 1;
+
+                                                                                                                                                                                                                                  display: flex;
+                                                                                                                                                                                                                                      flex-direction: column;
+                                                                                                                                                                                                                                          gap: 5px;
+                                                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                                                          .study-list-content strong {
+                                                                                                                                                                                                                                              overflow: hidden;
+
+                                                                                                                                                                                                                                                  color: var(--text);
+                                                                                                                                                                                                                                                      font-size: 0.88rem;
+                                                                                                                                                                                                                                                          font-weight: 600;
+
+                                                                                                                                                                                                                                                              text-overflow: ellipsis;
+                                                                                                                                                                                                                                                              }
+
+                                                                                                                                                                                                                                                              .study-list-content small {
+                                                                                                                                                                                                                                                                  color: var(--green-bright);
+                                                                                                                                                                                                                                                                      font-size: 0.7rem;
+                                                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                                                      .study-list-arrow {
+                                                                                                                                                                                                                                                                          color: var(--muted);
+                                                                                                                                                                                                                                                                              font-size: 12px;
+
+                                                                                                                                                                                                                                                                                  transition:
+                                                                                                                                                                                                                                                                                          color 0.2s ease,
+                                                                                                                                                                                                                                                                                                  transform 0.2s ease;
+                                                                                                                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                                                                                                                  .study-list-card:hover .study-list-arrow {
+                                                                                                                                                                                                                                                                                                      color: var(--green-bright);
+                                                                                                                                                                                                                                                                                                          transform: translateX(3px);
+                                                                                                                                                                                                                                                                                                          }
+
+
+                                                                                                                                                                                                                                                                                                          /* =========================================
+                                                                                                                                                                                                                                                                                                             MOBILE STUDY LIST
+                                                                                                                                                                                                                                                                                                                ========================================= */
+
+                                                                                                                                                                                                                                                                                                                @media (max-width: 700px) {
+
+                                                                                                                                                                                                                                                                                                                    .study-list-card {
+                                                                                                                                                                                                                                                                                                                            min-height: 58px;
+                                                                                                                                                                                                                                                                                                                                    padding: 12px 13px;
+                                                                                                                                                                                                                                                                                                                                            border-radius: 14px;
+                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                    .study-list-content strong {
+                                                                                                                                                                                                                                                                                                                                                            font-size: 0.84rem;
+                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                }

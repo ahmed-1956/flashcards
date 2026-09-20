@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="page-heading">
+
+    <span class="page-eyebrow">
+        <i class="fa-solid fa-plus"></i>
+        New Card
+    </span>
+
+    <h2>Add Flashcard</h2>
+
+    <p>Create a new question, answer, and category.</p>
+
+</div>
+
+<form method="POST">
+
+    <label for="question">Question</label>
+    <input
+        type="text"
+        id="question"
+        name="question"
+        required
+    >
+
+    <label for="answer">Answer</label>
+    <textarea
+        id="answer"
+        name="answer"
+        required
+    ></textarea>
+
+    <label for="category">Category</label>
+    <input
+        type="text"
+        id="category"
+        name="category"
+        required
+    >
+
+    <button type="submit">Add Card</button>
+
+</form>
+
+{% endblock %}

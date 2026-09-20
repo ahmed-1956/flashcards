@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Flashcards</title>
+    <link rel="icon" href="/static/icons/icon.svg" type="image/svg+xml">
+    <link rel="manifest" href="/static/manifest.json">
+    <meta property="og:title" content="Flashcards">
+    <meta property="og:description" content="Create, organize, and study your flashcards in one focused workspace.">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-brand">
+            <div class="brand-logo">
+                <i class="fa-solid fa-layer-group"></i>
+            </div>
+
+            <h1>Flashcards</h1>
+        </div>
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('index') }}">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="{{ url_for('cards') }}">
+                <i class="fa-solid fa-clone"></i>
+                <span>My Flashcards</span>
+            </a>
+
+            <a href="{{ url_for('study') }}">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>Study</span>
+            </a>
+
+            <a href="{{ url_for('add_card') }}">
+                <i class="fa-solid fa-plus"></i>
+                <span>Add</span>
+            </a>
+
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>

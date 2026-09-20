@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<section class="home-hero">
+
+    <span class="home-eyebrow">
+        <i class="fa-solid fa-layer-group"></i>
+        Study Workspace
+    </span>
+
+    <h2>Build your knowledge, one card at a time.</h2>
+
+    <p>
+         Create, organize, and review your flashcards in one focused workspace.
+    </p>
+
+</section>
+
+
+<section class="home-actions">
+
+    <a href="{{ url_for('add_card') }}" class="home-action primary-action">
+
+        <span class="home-action-icon">
+            <i class="fa-solid fa-plus"></i>
+        </span>
+
+        <span class="home-action-content">
+            <strong>Add a Flashcard</strong>
+            <small>Create a new question and answer.</small>
+        </span>
+
+        <i class="fa-solid fa-arrow-right home-action-arrow"></i>
+
+    </a>
+
+
+    <a href="{{ url_for('cards') }}" class="home-action">
+
+        <span class="home-action-icon">
+            <i class="fa-solid fa-clone"></i>
+        </span>
+
+        <span class="home-action-content">
+            <strong>My Flashcards</strong>
+            <small>View, edit, and manage your cards.</small>
+        </span>
+
+        <i class="fa-solid fa-arrow-right home-action-arrow"></i>
+
+    </a>
+    <a href="{{ url_for('study') }}" class="home-action">
+
+        <span class="home-action-icon">
+            <i class="fa-solid fa-graduation-cap"></i>
+            </span>
+
+            <span class="home-action-content">
+                <strong>Study</strong>
+                <small>Review your flashcards and test your knowledge.</small>
+            </span>
+
+            <i class="fa-solid fa-arrow-right home-action-arrow"></i>
+
+        </a>
+</section>
+
+{% endblock %}

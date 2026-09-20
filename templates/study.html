@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="page-heading">
+
+    <span class="page-eyebrow">
+        <i class="fa-solid fa-graduation-cap"></i>
+        Study Mode
+    </span>
+
+    <h2>Study</h2>
+
+    <p>Choose a flashcard and test your knowledge.</p>
+
+</div>
+
+{% if cards %}
+
+    <p>Choose a flashcard to study.</p>
+
+    {% for card in cards %}
+
+        <a href="{{ url_for('study', id=card['id']) }}" class="study-list-card">
+
+            <span class="study-list-icon">
+                <i class="fa-solid fa-book-open"></i>
+            </span>
+
+            <span class="study-list-content">
+                <strong>{{ card["question"] }}</strong>
+                <small>{{ card["category"] }}</small>
+            </span>
+
+            <i class="fa-solid fa-arrow-right study-list-arrow"></i>
+
+        </a>
+
+    {% endfor %}
+
+{% elif card %}
+
+    <h3>{{ card["question"] }}</h3>
+
+    <button type="button" onclick="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        Reveal Answer
+    </button>
+
+    <p style="display: none;">
+        Answer: {{ card["answer"] }}
+    </p>
+
+{% else %}
+
+    <p>No flashcards available.</p>
+
+{% endif %}
+
+{% endblock %}

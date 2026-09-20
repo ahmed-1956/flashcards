@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="page-heading">
+
+    <span class="page-eyebrow">
+        <i class="fa-solid fa-clone"></i>
+        Your Library
+    </span>
+
+    <h2>My Flashcards</h2>
+
+    <p>Manage and review your saved flashcards.</p>
+
+</div>
+
+{% if cards %}
+    {% for card in cards %}
+        <div class="flashcard-item">
+            <h3>{{ card["question"] }}</h3>
+            <p>{{ card["answer"] }}</p>
+            <small>{{ card["category"] }}</small>
+
+            <br><br>
+            <div class="card-actions">
+            <a href="/edit/{{ card['id'] }}" class="card-action edit-action">
+                    <i class="fa-solid fa-pencil"></i>
+                        Edit
+                        </a>
+
+
+            <form action="/delete/{{ card['id'] }}" method="POST" style="display:inline;">
+                <button type="submit" class="card-action delete-action" onclick="return confirm('Delete this flashcard?');">
+                    <i class="fa-regular fa-trash-can"></i>
+                    Delete
+                </button>
+                </form>
+            </div>
+            </div>
+        <hr>
+    {% endfor %}
+{% else %}
+    <p>No flashcards yet.</p>
+{% endif %}
+
+{% endblock %}

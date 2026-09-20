@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="page-heading">
+
+    <span class="page-eyebrow">
+        <i class="fa-solid fa-pencil"></i>
+        Edit Card
+    </span>
+
+    <h2>Edit Flashcard</h2>
+
+    <p>Update your question, answer, or category.</p>
+
+</div>
+
+<form method="POST">
+
+    <label>Question</label>
+    <input
+        type="text"
+        name="question"
+        value="{{ card['question'] }}"
+        required
+    >
+
+    <label>Answer</label>
+    <textarea
+        name="answer"
+        required
+    >{{ card['answer'] }}</textarea>
+
+    <label>Category</label>
+    <input
+        type="text"
+        name="category"
+        value="{{ card['category'] }}"
+        required
+    >
+
+    <button type="submit">Save Changes</button>
+
+</form>
+
+<a href="/cards">Cancel</a>
+
+{% endblock %}

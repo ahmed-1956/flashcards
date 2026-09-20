@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta property="og:title" content="Flashcards">
+    <meta property="og:description" content="Learn • Review • Remember">
+    <meta property="og:image" content="{{ url_for('static', filename='share-preview.png', _external=True) }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Flashcards">
+    <meta name="twitter:description" content="Learn • Review • Remember">
+    <meta name="twitter:image" content="{{ url_for('static', filename='share-preview.png', _external=True) }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
